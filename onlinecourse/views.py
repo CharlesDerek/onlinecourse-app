@@ -152,16 +152,18 @@ def show_exam_result(request, course_id, submission_id):
     for question in all_questions:
         for choice in question.choice_set.all():
             if choice.is_correct and choice in selected:
-                grade += 1
+                grade +=1
             if choice.is_correct:
                 all_answers +=1
+            if not choice.is_correct and choice in selected:
+                grade -=1 
                 
     grade /= all_answers
     grade*=100
     
     context['course'] = course
     context['selected_ids'] = selected
-    context['grade'] = grade
+    context['grade'] = int(grade)
 
     return render(request, 'onlinecourse/exam_result_bootstrap.html', context)
 
