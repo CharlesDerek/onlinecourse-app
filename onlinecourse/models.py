@@ -125,7 +125,7 @@ class Choice(models.Model):
     # Choice content
     choice_content = models.CharField(null=False,max_length=200,default='choice is empty')
     # Indicate if this choice of the question is a correct one or not
-    is_corret = models.BooleanField(null=False,max_length=2,default=False)
+    is_correct = models.BooleanField(null=False,max_length=2,default=False)
 
     
 class Submission(models.Model):
